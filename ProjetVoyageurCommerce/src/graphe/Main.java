@@ -83,7 +83,7 @@ public class Main
 		
 		
 		System.out.println("jump");
-		//Fenetre fen3 = new Fenetre(coordonneeville, distanceville, lalgopseudocomp,"pseudocomp : " + "meilleur trajet : " + lalgopseudocomp + "\n temps d'execution avec "+n+" villes : " + talgopseudocomp + "ms");	
+		// Fenetre fen31 = new Fenetre(coordonneeville, distanceville, lalgopseudocomp,"pseudocomp : " + "meilleur trajet : " + lalgopseudocomp + "\n temps d'execution avec "+n+" villes : " + talgopseudocomp + "ms");	
 		Fenetre fen1 = new Fenetre(coordonneeville, distanceville, lalgoppv, "ppv : " + "meilleur trajet : " + lalgoppv + "\n temps d'execution avec "+n+" villes : " + talgoppv + "ms");	
 		Fenetre fen2 = new Fenetre(coordonneeville, distanceville, lalgoopt, "2optv1 : " + "meilleur trajet : " + lalgoopt + "\n temps d'execution avec "+n+" villes : " + talgoopt + "ms");
 		//Fenetre fen4 = new Fenetre(coordonneeville, distanceville, lalgoopt1,"2optv2 : " + "meilleur trajet : " + lalgoopt1 + "\n temps d'execution avec "+n+" villes : " + talgoopt1 + "ms");
