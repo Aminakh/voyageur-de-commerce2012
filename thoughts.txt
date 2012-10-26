@@ -1,0 +1,37 @@
+tableau d'arraylist
+	algo : 
+		on choisit une ville au hasard (la ville de départ)
+		on la raccorde à la ville la plus proche
+		tant qu'on a pas raccordé toutes les villes
+		parcours total sur le tableau de nouvelles villes
+		on raccorde les deux villes ayant l'éloignement le plus faible
+		
+		une fois qu'on a l'arbre
+		tant qu'il y a des changements
+			parcours total sur le tableau de ville
+			si une ville a un seul voisin ( tab[x].size == 1)
+				on cherche dans le tableau la ville la plus proche n'ayant qu'un seul voisin et on les raccorde
+			si un ville a trois voisins
+				on cherche l'arc à enlever
+				si une des villes a plus de deux voisins, on supprime tous les arcs en trop de la facon suivante
+					on supprime les arcs par ordre décroissant de longueur
+					si la ville reliée par cet arc a 1 voisin, on ne fait rien
+					si la ville reliée par cet arc a plus de deux voisins, on supprime l'arc
+					si la ville a exactement deux voisins, on peut supprimer l'arc, mais alors la ville se retrouve avec un seul
+					voisin, il faut donc la relier avec la ville ayant un seul voisin la plus proche
+			si une ville a un seul voisin
+				on la relie à la ville ayant un seul voisin la plus proche
+			si la ville a deux voisins
+				nickel
+
+prévisions méthodes
+	
+	une  méthode pour créer l'arbre de départ
+	une méthode qui s'occupe de parcourir l'arbre et qui appelle les méthodes suivantes au besoin
+		une méthode qui s'occupe de faire ce qu'il faut sur la ville
+			parcourir tous ses voisins et supprimer s'il faut, supprimer et raccorder sinon
+		une méthode qui relie à une autre ville a un voisin
+		
+	une méthode pour faire de ce tableau une arraylist compatible avec le reste
+	
+		
