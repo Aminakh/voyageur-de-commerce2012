@@ -45,11 +45,11 @@ public class GenerateurVille {
 		 * la valeur maximale pour l'indice et l'ordonnée est fixée à 999 pour avoir des valeurs raisonnables
 		 */
 		for(int i = 0; i < tab.length; i++){
-			int longueur = 1+generateur.nextInt(999);
-			int largeur = 1+generateur.nextInt(999);
+			int abcisse = 1+generateur.nextInt(999);
+			int ordonnee = 1+generateur.nextInt(999);
 			tab[i][0] = i;
-			tab[i][1] = longueur;
-			tab[i][2] = largeur;
+			tab[i][1] = abcisse;
+			tab[i][2] = ordonnee;
 			
 		}
 		return tab;

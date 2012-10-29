@@ -79,16 +79,17 @@ public class Main
 		time2 = ManagementFactory.getThreadMXBean().getCurrentThreadCpuTime();		
 		int talgoopt = (int) ((time2-time1)/1000000000);
 		
-		
-		time1 = ManagementFactory.getThreadMXBean().getCurrentThreadCpuTime();		
-		ArrayList <Integer> lalgoopttaboo = opttaboo.calculDeuxOptTaboo(lalgoppv, coordonneeville, distanceville);			
-		time2 = ManagementFactory.getThreadMXBean().getCurrentThreadCpuTime();		
-		int talgoopt1 = (int) ((time2-time1)/1000000000);
-		
 		time1 = ManagementFactory.getThreadMXBean().getCurrentThreadCpuTime();		
 		ArrayList <Integer> lalgormc = rmc.calculRMC(lalgoppv, coordonneeville, distanceville);			
 		time2 = ManagementFactory.getThreadMXBean().getCurrentThreadCpuTime();		
 		int talgormc = (int) ((time2-time1)/1000000000);
+		
+		time1 = ManagementFactory.getThreadMXBean().getCurrentThreadCpuTime();		
+		ArrayList <Integer> lalgoopttaboo = opttaboo.calculDeuxOptTaboo(lalgormc, coordonneeville, distanceville);			
+		time2 = ManagementFactory.getThreadMXBean().getCurrentThreadCpuTime();		
+		int talgoopt1 = (int) ((time2-time1)/1000000000);
+		
+		
 		
 		
 		System.out.println("jump");
