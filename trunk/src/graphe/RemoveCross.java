@@ -10,9 +10,10 @@ public ArrayList<Integer> calculRMC(ArrayList<Integer> l, int [][] coordville, i
 	ArrayList<Integer> chemin = new ArrayList<Integer>(l);
 	int distemp;
 	int i = 1;
-	int j = 1;
-while (i < chemin.size() - 1){
+	int j = 2;
+while (i < chemin.size() - 2){
 	while (j < chemin.size() - 1){
+
 		//if (i == j){j = i+1;} //pour éviter de vérifier trois villes consecutives
 		if (detecteCroisement(chemin, coordville, i , j)){	//si un croisement est détecté on inverse les arètes
 			System.out.println("i : "+chemin.get(i) + " i+1 : "+chemin.get(i+1)+" j : "+chemin.get(j)+" j+1 : "+chemin.get(j+1));
@@ -20,7 +21,7 @@ while (i < chemin.size() - 1){
 			chemin.set(i+1, chemin.get(j));
 			chemin.set(j, distemp);
 			System.out.println(chemin);
-			i=1;
+			i=2;
 			j=1;
 			}
 		j++;

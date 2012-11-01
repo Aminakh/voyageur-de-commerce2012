@@ -24,10 +24,10 @@ public class Panneau extends JPanel {
 		 g.drawString(String.valueOf(distanceville[i][j]), i*30, j*30); } }
 		*/ 
 		g.drawString(s, 10, 550);
-		/*for( int i = 0; i < coordonneeville.length; i++){
+		for( int i = 0; i < coordonneeville.length; i++){
 		 g.drawString(String.valueOf(i), this.coordonneeville[i][1]/2,
 		 this.coordonneeville[i][2]/2); }
-		*/
+		
 	for (int i = 1; i < l.size() - 1; i++) {
 			g.drawLine(coordonneeville[l.get(i)][1] / 2,
 					coordonneeville[l.get(i)][2] / 2,
