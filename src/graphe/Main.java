@@ -4,18 +4,27 @@ import java.lang.management.ManagementFactory;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 
 public class Main
 {
 	public static void main(String[] args){
-		Scanner sc = new Scanner(System.in);
+		/*Scanner sc = new Scanner(System.in);
 		System.out.print("nombre de villes : ");
 		int n = sc.nextInt();
 		System.out.print("ville de départ : ");
 		int d = sc.nextInt();
 		System.out.print("seed : ");
 		int seed = sc.nextInt();
-		
+		*/
+		String s = JOptionPane.showInputDialog("nombre de villes : ");
+		int n = Integer.valueOf(s);
+		System.out.print(n);
+		s = JOptionPane.showInputDialog("ville de départ : ");
+		int d = Integer.valueOf(s);
+		s = JOptionPane.showInputDialog("seed : ");
+		int seed = Integer.valueOf(s);
 		GenerateurVille g = new GenerateurVille(n, seed);
 		
 		int [][] coordonneeville;
@@ -40,7 +49,7 @@ public class Main
 		
 		BruteForce algobf = new BruteForce(g.getNbville(), d);
 		PlusProcheVoisin ppv = new PlusProcheVoisin();
-		DeuxOpt opt = new DeuxOpt();
+		DeuxOpt2 opt = new DeuxOpt2();
 		RemoveCross rmc = new RemoveCross();
 		DeuxOptTaboo opttaboo = new DeuxOptTaboo();
 		ApproximationAC aac = new ApproximationAC(distanceville.length);
@@ -62,6 +71,10 @@ public class Main
 		
 		AlgoPseudoComplet algopseudocomp = new AlgoPseudoComplet(g.getNbville(), d, lalgoppv.get(0));
 
+		time1 = ManagementFactory.getThreadMXBean().getCurrentThreadCpuTime();		
+		ArrayList <Integer> lalgoopttaboo = opttaboo.calculDeuxOptTaboo(lalgoppv, coordonneeville, distanceville);			
+		time2 = ManagementFactory.getThreadMXBean().getCurrentThreadCpuTime();		
+		int talgoopt1 = (int) ((time2-time1)/1000000000);
 		
 		time1 = ManagementFactory.getThreadMXBean().getCurrentThreadCpuTime();
 		//ArrayList <Integer> lalgopseudocomp = algopseudocomp.calculAlgoPseudoComplet(d, km ,l , distanceville);			
@@ -75,19 +88,16 @@ public class Main
 		System.out.println("jump");
 		
 		time1 = ManagementFactory.getThreadMXBean().getCurrentThreadCpuTime();		
-		ArrayList <Integer> lalgoopt = null;//opt.calculDeuxOpt(lalgoppv, coordonneeville, distanceville);			
+		//ArrayList <Integer> lalgoopt = opt.calculDeuxOpt(lalgoopttaboo, coordonneeville, distanceville);			
 		time2 = ManagementFactory.getThreadMXBean().getCurrentThreadCpuTime();		
 		int talgoopt = (int) ((time2-time1)/1000000000);
 		
 		time1 = ManagementFactory.getThreadMXBean().getCurrentThreadCpuTime();		
-		ArrayList <Integer> lalgormc = rmc.calculRMC(lalgoppv, coordonneeville, distanceville);			
+		//ArrayList <Integer> lalgormc = rmc.calculRMC(lalgoppv, coordonneeville, distanceville);			
 		time2 = ManagementFactory.getThreadMXBean().getCurrentThreadCpuTime();		
 		int talgormc = (int) ((time2-time1)/1000000000);
 		
-		time1 = ManagementFactory.getThreadMXBean().getCurrentThreadCpuTime();		
-		ArrayList <Integer> lalgoopttaboo = opttaboo.calculDeuxOptTaboo(lalgoppv, coordonneeville, distanceville);			
-		time2 = ManagementFactory.getThreadMXBean().getCurrentThreadCpuTime();		
-		int talgoopt1 = (int) ((time2-time1)/1000000000);
+		
 		
 		
 		
@@ -97,7 +107,7 @@ public class Main
 		Fenetre fen1 = new Fenetre(coordonneeville, distanceville, lalgoppv, "ppv : " + "meilleur trajet : " + lalgoppv + "\n temps d'execution avec "+n+" villes : " + talgoppv + "s");	
 		//Fenetre fen2 = new Fenetre(coordonneeville, distanceville, lalgoopt, "2optv1 : " + "meilleur trajet : " + lalgoopt + "\n temps d'execution avec "+n+" villes : " + talgoopt + "s");
 		Fenetre fen4 = new Fenetre(coordonneeville, distanceville, lalgoopttaboo,"2optv2 : " + "meilleur trajet : " + lalgoopttaboo + "\n temps d'execution avec "+n+" villes : " + talgoopt1 + "s");
-		Fenetre fen5 = new Fenetre(coordonneeville, distanceville, lalgormc,"rmc : " + "meilleur trajet : " + lalgormc + "\n temps d'execution avec "+n+" villes : " + talgormc + "s");
+		//Fenetre fen5 = new Fenetre(coordonneeville, distanceville, lalgormc,"rmc : " + "meilleur trajet : " + lalgormc + "\n temps d'execution avec "+n+" villes : " + talgormc + "s");
 
 		
 		g.afficheCoordonnees(coordonneeville);
@@ -106,11 +116,13 @@ public class Main
 		//System.out.println("Algo complet : \n meilleur trajet : " + lalgobf + "\n temps d'execution avec "+n+" villes : " + talgocbf + "ms");
 		//System.out.println("Algo pseudo complet : \n meilleur trajet : " + lalgopseudocomp + "\n temps d'execution avec "+n+" villes : " + talgopseudocomp + "s");
 		System.out.println("Algo plus proche voisin : \n meilleur trajet : " + lalgoppv + "\n temps d'execution avec "+n+" villes : " + talgoppv + "s");
-		System.out.println("Algo 2-opt : \n meilleur trajet : " + lalgoopt + "\n temps d'execution avec "+n+" villes : " + talgoopt + "s");
-		System.out.println("Algo removeCross : \n meilleur trajet : " + lalgormc + "\n temps d'execution avec "+n+" villes : " + talgormc + "s");
+		//System.out.println("Algo 2-opt : \n meilleur trajet : " + lalgoopt + "\n temps d'execution avec "+n+" villes : " + talgoopt + "s");
+		//System.out.println("Algo removeCross : \n meilleur trajet : " + lalgormc + "\n temps d'execution avec "+n+" villes : " + talgormc + "s");
 		System.out.println("Algo 2-opt : \n meilleur trajet : " + lalgoopttaboo + "\n temps d'execution avec "+n+" villes : " + talgoopt1 + "s");
 		
 	}
+
+
 
 	
 
