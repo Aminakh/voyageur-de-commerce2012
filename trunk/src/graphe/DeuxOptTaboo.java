@@ -18,7 +18,7 @@ public class DeuxOptTaboo {
 		int distemp;
 		int i = 1; //la case 0 est la distance totale et la case 1 est le point de départ, que l'on ne doit pas changer
 		int j = 2;	// pour ne pas avoir trois villes consecutives
- 		boolean bool = true;
+ 		//boolean bool = true;
  	while (i  < l.size() -2 /*&& this.taboo.size() < 22337*/)
  	{
 		while(j  < l.size() - 1 /*&& this.taboo.size() < 22337*/)
