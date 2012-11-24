@@ -16,24 +16,26 @@ public class DeuxOptTaboo {
 		ArrayList<String> temp = new ArrayList<String>();
 		temp.add("");
 		int distemp;
+		int k = 0;
 		int i = 1; //la case 0 est la distance totale et la case 1 est le point de départ, que l'on ne doit pas changer
 		int j = 2;	// pour ne pas avoir trois villes consecutives
  		//boolean bool = true;
- 	while (i  < l.size() -2 /*&& this.taboo.size() < 22337*/)
+ 	while (i  < l.size() -2/* && k < 200000*/)
  	{
-		while(j  < l.size() - 1 /*&& this.taboo.size() < 22337*/)
+		while(j  < l.size() - 1 /*&& k < 200000*/ )
 		{	
 			if(i == j){j = i+1;}
 				if(		
 					((distville[chemin.get(i)][chemin.get(j)] + distville[chemin.get(i+1)][chemin.get(j+1)])
 					< 
-					(distville[chemin.get(i)][chemin.get(i+1)] + distville[chemin.get(j)][chemin.get(j+1)])) | detecteCroisement(chemin, coordville, i , j)){
+					(distville[chemin.get(i)][chemin.get(i+1)] + distville[chemin.get(j)][chemin.get(j+1)])) | detecteCroisement(chemin, coordville, i , j)  & !detecteCroisement(chemin, coordville, i+1 , j)){
 					
 					if(!existeDansTaboo((String.valueOf(chemin.get(i)) + " " + String.valueOf(chemin.get(i+1)) + " " + String.valueOf(chemin.get(j)) + " " + String.valueOf(chemin.get(j+1))), temp)){
 					
 					//System.out.println((String.valueOf(chemin.get(i)) + " " + String.valueOf(chemin.get(i+1)) + " " + String.valueOf(chemin.get(j)) + " " + String.valueOf(chemin.get(j+1))));
 					//5812
-						System.out.println(chemin);
+						k++;
+					System.out.println(k);
 					distemp = chemin.get(i+1);
 					chemin.set(i+1, chemin.get(j));
 					chemin.set(j, distemp);
