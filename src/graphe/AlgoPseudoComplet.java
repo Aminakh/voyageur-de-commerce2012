@@ -17,7 +17,7 @@ public class AlgoPseudoComplet
 		
 		}
 	
-	/* *
+	/**
 	 * méthode de calcul complete de tous les trajet et retournant le meilleur
 	 * elle marche de m=la facon suivante : 
 	 * - v est la ville précédemment visitée, celle d'où on vient
@@ -28,7 +28,7 @@ public class AlgoPseudoComplet
 	 * distance parcourue
 	 */
 	
-	public   ArrayList<Integer> calculAlgoPseudoComplet(int v, ArrayList<Integer> k, ArrayList<Integer> l, int [][] ville){
+	public   ArrayList<Integer> calculAlgoPseudoComplet(int v, ArrayList<Integer> k, ArrayList<Integer> l, int [][] ville, int ppv){
 		int i = 0;
 		if (l.size() == 0 &&  ville[v][k.get(1)] + k.get(0) < this.meilleurtrajet.get(0)){
 			k.set(0, ville[v][k.get(1)] + k.get(0));
@@ -38,17 +38,23 @@ public class AlgoPseudoComplet
 			}
 		else{
 			while(i < l.size())	{
-				if(k.get(0) + ville[l.get(i)][v] >= this.meilleurtrajet.get(0)){
-					break;
+				if(k.get(0) + ville[l.get(i)][v] >= this.meilleurtrajet.get(0) | k.get(0) + ApproximationAC.creeArbre(ville, k) >= this.meilleurtrajet.get(0)){
+					/*System.out.println("MST : "+(k.get(0)+ApproximationAC.creeArbre(ville, k)));
+					System.out.println("ppv : "+this.meilleurtrajet.get(0));*/
+					System.out.println(Ident.ident());
+					return k;
 					}
+				else{
+				//System.out.println(k.get(0) + ville[l.get(i)][v]);
 				ArrayList<Integer> nl = new ArrayList<Integer>(l);
 				nl.remove(i);
 				ArrayList<Integer> km = new ArrayList<Integer>(k);
 				km.set(0, ville[l.get(i)][v] + k.get(0));
 				km.add(l.get(i));
-				
-					calculAlgoPseudoComplet(l.get(i),km,  nl, ville);
+				ppv++;
+					calculAlgoPseudoComplet(l.get(i),km,  nl, ville, ppv);
 				i++;
+				}
 			}
 		}
 		return this.meilleurtrajet;
