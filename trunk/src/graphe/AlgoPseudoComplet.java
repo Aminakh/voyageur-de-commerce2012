@@ -13,7 +13,7 @@ public class AlgoPseudoComplet
 	public AlgoPseudoComplet(int nombredevilles, int d, int bestofthebest)
 	{
 		meilleurtrajet = new ArrayList<Integer>();
-		meilleurtrajet.add(bestofthebest);
+		meilleurtrajet.add(9999999);
 		
 		}
 	
@@ -28,7 +28,7 @@ public class AlgoPseudoComplet
 	 * distance parcourue
 	 */
 	
-	public   ArrayList<Integer> calculAlgoPseudoComplet(int v, ArrayList<Integer> k, ArrayList<Integer> l, int [][] ville, int ppv){
+	public   ArrayList<Integer> calculAlgoPseudoComplet(int v, ArrayList<Integer> k, ArrayList<Integer> l, int [][] ville){
 		int i = 0;
 		if (l.size() == 0 &&  ville[v][k.get(1)] + k.get(0) < this.meilleurtrajet.get(0)){
 			k.set(0, ville[v][k.get(1)] + k.get(0));
@@ -38,11 +38,11 @@ public class AlgoPseudoComplet
 			}
 		else{
 			while(i < l.size())	{
-				if(k.get(0) + ville[l.get(i)][v] >= this.meilleurtrajet.get(0) | k.get(0) + ApproximationAC.creeArbre(ville, k) >= this.meilleurtrajet.get(0)){
-					/*System.out.println("MST : "+(k.get(0)+ApproximationAC.creeArbre(ville, k)));
+				if(k.get(0) + ville[l.get(i)][v] >= this.meilleurtrajet.get(0) | k.get(0) + ApproximationAC.creeArbre(ville, l, v) >= 2*this.meilleurtrajet.get(0)){
+					/*System.out.println("MST : "+(k.get(0)+ApproximationAC.creeArbre(ville, l, v)));
 					System.out.println("ppv : "+this.meilleurtrajet.get(0));*/
-					System.out.println(Ident.ident());
-					return k;
+					//System.out.println(Ident.ident());
+					break;
 					}
 				else{
 				//System.out.println(k.get(0) + ville[l.get(i)][v]);
@@ -51,8 +51,7 @@ public class AlgoPseudoComplet
 				ArrayList<Integer> km = new ArrayList<Integer>(k);
 				km.set(0, ville[l.get(i)][v] + k.get(0));
 				km.add(l.get(i));
-				ppv++;
-					calculAlgoPseudoComplet(l.get(i),km,  nl, ville, ppv);
+					calculAlgoPseudoComplet(l.get(i),km,  nl, ville);
 				i++;
 				}
 			}

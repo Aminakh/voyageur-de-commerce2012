@@ -72,7 +72,7 @@ public class Main
 		
 		int a = 0;
 		time1 = ManagementFactory.getThreadMXBean().getCurrentThreadCpuTime();
-		ArrayList <Integer> lalgopseudocomp = algopseudocomp.calculAlgoPseudoComplet(d, km ,l , distanceville, a );			
+		ArrayList <Integer> lalgopseudocomp = algopseudocomp.calculAlgoPseudoComplet(d, km ,l , distanceville);			
 		time2 = ManagementFactory.getThreadMXBean().getCurrentThreadCpuTime();			
 		int talgopseudocomp = (int) ((time2-time1)/1000000000);
 		
@@ -98,7 +98,7 @@ public class Main
 		int talgoopt = (int) ((time2-time1)/1000000000);
 
 		time1 = ManagementFactory.getThreadMXBean().getCurrentThreadCpuTime();		
-		//ArrayList <Integer> lalgoopttaboo = opttaboo.calculDeuxOptTaboo(lalgoppv, coordonneeville, distanceville);			
+		ArrayList <Integer> lalgoopttaboo = opttaboo.calculDeuxOptTaboo(lalgoppv, coordonneeville, distanceville);			
 		time2 = ManagementFactory.getThreadMXBean().getCurrentThreadCpuTime();		
 		int talgoopt1 = (int) ((time2-time1)/1000000000);
 		
@@ -119,7 +119,7 @@ public class Main
 		System.out.println("Algo plus proche voisin : \n meilleur trajet : " + lalgoppv + "\n temps d'execution avec "+n+" villes : " + talgoppv + "s");
 		//System.out.println("Algo 2-opt : \n meilleur trajet : " + lalgoopt + "\n temps d'execution avec "+n+" villes : " + talgoopt + "s");
 		//System.out.println("Algo removeCross : \n meilleur trajet : " + lalgormc + "\n temps d'execution avec "+n+" villes : " + talgormc + "s");
-		//System.out.println("Algo 2-opt : \n meilleur trajet : " + lalgoopttaboo + "\n temps d'execution avec "+n+" villes : " + talgoopt1 + "s");
+		System.out.println("Algo 2-opt : \n meilleur trajet : " + lalgoopttaboo + "\n temps d'execution avec "+n+" villes : " + talgoopt1 + "s");
 		
 	}
 
