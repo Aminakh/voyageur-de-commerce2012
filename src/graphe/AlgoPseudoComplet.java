@@ -39,9 +39,6 @@ public class AlgoPseudoComplet
 		else{
 			while(i < l.size())	{
 				if(k.get(0) + ville[l.get(i)][v] >= this.meilleurtrajet.get(0) | k.get(0) + ApproximationAC.creeArbre(ville, l, v) >= 2*this.meilleurtrajet.get(0)){
-					/*System.out.println("MST : "+(k.get(0)+ApproximationAC.creeArbre(ville, l, v)));
-					System.out.println("ppv : "+this.meilleurtrajet.get(0));*/
-					//System.out.println(Ident.ident());
 					break;
 					}
 				else{

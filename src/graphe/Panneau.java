@@ -19,14 +19,18 @@ public class Panneau extends JPanel {
 	}
 
 	public void paintComponent(Graphics g) {
+		
+		g.drawString(s, 10, 550);
+		
+		
 		/* for( int i = 0; i < distanceville.length; i++){ for( int j = 0; j <
 		 distanceville.length; j++){
 		 g.drawString(String.valueOf(distanceville[i][j]), i*30, j*30); } }
 		*/ 
-		g.drawString(s, 10, 550);
-		for( int i = 0; i < coordonneeville.length; i++){
+		
+		/*for( int i = 0; i < coordonneeville.length; i++){
 		 g.drawString(String.valueOf(i), this.coordonneeville[i][1]/2,
-		 this.coordonneeville[i][2]/2); }
+		 this.coordonneeville[i][2]/2); }*/
 		
 	for (int i = 1; i < l.size() - 1; i++) {
 			g.drawLine(coordonneeville[l.get(i)][1] / 2,
