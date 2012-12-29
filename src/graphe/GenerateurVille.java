@@ -28,7 +28,7 @@ public class GenerateurVille {
 	}
 
 
-	/*
+	/**
 	 * crée une premier tableau dans lequel on stock les numéros des villes et leurs coordonnées pour ensuite calculer un nouveau
 	 * tableau avec leur éloignement
 	 */ 
@@ -37,7 +37,7 @@ public class GenerateurVille {
 		int [][] tab = new int [this.getNbville()][3];
 		Random generateur = new Random(this.seed);
 		
-		/*
+		/**
 		 * dans la premiere case on range l'indice de la ville, c'est à dire le numéro permettant de la représenter
 		 * dans la deuxieme case on range son abscisse
 		 * dans la troisieme case on range son ordonnée
@@ -56,7 +56,7 @@ public class GenerateurVille {
 	}
 	
 	
-	/*
+	/**
 	 * calcul l'éloignement entre les villes contenues dans le tableau précédemment créé et le range dans un nouveau tableau
 	 */
 	
@@ -76,7 +76,7 @@ public class GenerateurVille {
 
 // méthode d'affichage de l'abscisse et de l'ordonnée des villes
 	//totalement inutile
-public void afficheCoordonnees(int [][] tab){
+/*public void afficheCoordonnees(int [][] tab){
 	for (int i = 0; i < tab.length; i++){
 		System.out.print("ville n° " +tab[i][0]);
 		System.out.print(" abscisse : " + tab[i][1]);
@@ -101,6 +101,6 @@ public void afficheDistanceville(int ville[][]){
 		System.out.println("");
 		}
 }
-
+*/
 }
 

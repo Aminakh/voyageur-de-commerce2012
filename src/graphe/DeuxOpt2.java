@@ -28,10 +28,10 @@ public class DeuxOpt2 {
 			cheminbis.set(i+1, chemin.get(j));
 			cheminbis.set(j, chemin.get(i+1));
 			cheminbis.set(0, calculDistance(cheminbis, distville));
-			System.out.println("chemin : "+chemin.get(0));
-			System.out.println(i);
+		/*	System.out.println("chemin : "+chemin.get(0));
+			System.out.println(i);*/
 			if(cheminbis.get(0) < chemin.get(0) /*|| detecteCroisement(chemin, coordville, i , j)*/){
-				System.out.println("cheminbis : " +cheminbis.get(0));
+			//	System.out.println("cheminbis : " +cheminbis.get(0));
 
 					chemin.clear();
 					chemin.addAll(cheminbis);
