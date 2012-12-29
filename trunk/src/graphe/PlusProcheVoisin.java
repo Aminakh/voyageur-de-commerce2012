@@ -7,7 +7,7 @@ public class PlusProcheVoisin
 
 	
 	
-public ArrayList<Integer> calculPlusProcheVoisin(ArrayList<Integer> liste, int [][] distville){
+public static ArrayList<Integer> calculPlusProcheVoisin(ArrayList<Integer> liste, int [][] distville){
 	Integer indk;
 	int villedep;
 	int distmin = distville[0][0];//distance minimum après parcours des villes
@@ -42,9 +42,10 @@ public ArrayList<Integer> calculPlusProcheVoisin(ArrayList<Integer> liste, int [
 			distmin = distville[0][0];
 		}
 		parcours.set(0, distville[parcours.get(1)] [parcours.get(parcours.size()-1)] + parcours.get(0));
-		System.out.println(parcours.get(0));
-		if(parcours.get(0) < bestparcours.get(0))
+		if(parcours.get(0) < bestparcours.get(0)){
 			bestparcours = new ArrayList<Integer>(parcours);
+			ResultatCalcul.setRes(bestparcours);
+		}
 }	
 	
 	bestparcours.add(bestparcours.get(1));

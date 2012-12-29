@@ -3,7 +3,6 @@ package graphe;
 import java.util.ArrayList;
 
 public class BruteForce {
-	private ArrayList<Integer> meilleurtrajet;
 
 	/**
 	 * variable dans laquelle est stockée le meilleur trajet, un nombre élevé et
@@ -11,8 +10,8 @@ public class BruteForce {
 	 */
 
 	public BruteForce(int nombredevilles, int d) {
-		meilleurtrajet = new ArrayList<Integer>();
-		meilleurtrajet.add(999999);
+		ResultatCalcul.clearRes();
+		ResultatCalcul.getRes().add(999999);
 
 	}
 
@@ -31,9 +30,10 @@ public class BruteForce {
 		if (l.size() == 0) {
 			k.set(0, ville[v][k.get(1)] + k.get(0));
 			k.add(k.get(1));
-			System.out.println(k);
-			if (k.get(0) < this.meilleurtrajet.get(0)) {
-				this.meilleurtrajet = k;
+			//System.out.println(k);
+			ResultatCalcul.setRes(k);
+			if (k.get(0) < ResultatCalcul.getRes().get(0)) {
+				ResultatCalcul.setRes(k);
 			}
 		} else {
 			for (int i = 0; i < l.size(); i++) {
@@ -46,6 +46,6 @@ public class BruteForce {
 				calculAlgoComplet(l.get(i), km, nl, ville);
 			}
 		}
-		return this.meilleurtrajet;
+		return ResultatCalcul.getRes();
 	}
 }

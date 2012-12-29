@@ -11,18 +11,20 @@ public class DeuxOptTaboo {
 		this.cpt = 0;
 	}
 	/** 60-2-2*/
-	public ArrayList<Integer> calculDeuxOptTaboo(ArrayList<Integer> l, int [][] coordville, int [][] distville){
-		ArrayList<Integer> chemin = new ArrayList<Integer>(l);
+	public void calculDeuxOptTaboo(ArrayList<Integer> chemin, int [][] coordville, int [][] distville){
 		ArrayList<String> temp = new ArrayList<String>();
+		
+		int size = chemin.size();
+		
 		temp.add("");
 		int distemp;
 		int k = 0;
 		int i = 1; //la case 0 est la distance totale et la case 1 est le point de départ, que l'on ne doit pas changer
 		int j = 2;	// pour ne pas avoir trois villes consecutives
  		//boolean bool = true;
- 	while (i  < l.size() -2/* && k < 200000*/)
+ 	while (i  < size -2/* && k < 200000*/)
  	{
-		while(j  < l.size() - 1 /*&& k < 200000*/ )
+		while(j  < size - 1 /*&& k < 200000*/ )
 		{	
 			if(i == j){j = i+1;}
 				if(		
@@ -35,7 +37,7 @@ public class DeuxOptTaboo {
 					//System.out.println((String.valueOf(chemin.get(i)) + " " + String.valueOf(chemin.get(i+1)) + " " + String.valueOf(chemin.get(j)) + " " + String.valueOf(chemin.get(j+1))));
 					//5812
 						k++;
-					System.out.println(k);
+				//	System.out.println(k);
 					distemp = chemin.get(i+1);
 					chemin.set(i+1, chemin.get(j));
 					chemin.set(j, distemp);
@@ -48,7 +50,7 @@ public class DeuxOptTaboo {
 		i++;
 		j = 2;
 	}
- 	return calculDistance(chemin, distville);
+ 	chemin = calculDistance(chemin, distville);
 }
 	
 	public boolean existeDansTaboo(String s, ArrayList<String> temp) {
